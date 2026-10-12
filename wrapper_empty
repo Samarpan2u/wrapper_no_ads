@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="2.0">
+
+	<!-- Wrapper 1 -> Empty (empty.xml has no <Ad>) -->
+	<Ad id="1">
+		<Wrapper>
+			<AdSystem version="1.0.0"><![CDATA[Torrential]]></AdSystem>
+			<VASTAdTagURI><![CDATA[https://raw.githubusercontent.com/rabindratamang/vast/refs/heads/master/empty.xml]]></VASTAdTagURI>
+			<Impression id="Impression"><![CDATA[https://wrapper-1-impression.com]]></Impression>
+			<Error><![CDATA[https://wrapper-1-error.com?code=[ERRORCODE]]]></Error>
+		</Wrapper>
+	</Ad>
+
+	<!-- Wrapper 2 -> No ads (wrapper that leads to empty.xml, so the chain ends with no ad) -->
+	<Ad id="2">
+		<Wrapper>
+			<AdSystem version="1.0.0"><![CDATA[Torrential]]></AdSystem>
+			<VASTAdTagURI><![CDATA[https://raw.githubusercontent.com/rabindratamang/vast/refs/heads/master/multi-wrapper/multi-empty/multi-single-wrapper-empty.xml]]></VASTAdTagURI>
+			<Impression id="Impression"><![CDATA[https://wrapper-2-impression.com]]></Impression>
+			<Error><![CDATA[https://wrapper-2-error.com?code=[ERRORCODE]]]></Error>
+		</Wrapper>
+	</Ad>
+
+	<!-- Inline ad that is not valid: no MediaFiles, so nothing can be played -->
+	<Ad id="3">
+		<InLine>
+			<AdSystem><![CDATA[Torrential]]></AdSystem>
+			<AdTitle><![CDATA[Invalid Inline]]></AdTitle>
+			<Impression id="Impression"><![CDATA[https://inline-3-impression.com]]></Impression>
+			<Error><![CDATA[https://inline-3-error.com?code=[ERRORCODE]]]></Error>
+			<Creatives>
+				<Creative id="invalid-1">
+					<Linear>
+						<Duration>00:00:30</Duration>
+						<TrackingEvents>
+							<Tracking event="start"><![CDATA[https://inline-3-event-start.com]]></Tracking>
+							<Tracking event="complete"><![CDATA[https://inline-3-event-complete.com]]></Tracking>
+						</TrackingEvents>
+						<VideoClicks>
+							<ClickThrough><![CDATA[https://inline-3-clickthrough.com]]></ClickThrough>
+						</VideoClicks>
+					</Linear>
+				</Creative>
+			</Creatives>
+		</InLine>
+	</Ad>
+
+</VAST>
